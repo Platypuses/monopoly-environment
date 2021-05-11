@@ -41,7 +41,7 @@ services:
     expose:
       - 80
     environment:
-      BACKEND_BASE_URL: http://monopoly-api.casper.by/api/v1
+      BACKEND_BASE_URL: https://monopoly-api.casper.by/api/v1
     networks:
       - monopoly-app-network
     depends_on:
@@ -53,8 +53,14 @@ services:
     restart: always
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./nginx/monopoly.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/includes/common_server_config.conf:/etc/nginx/common_server_config.conf
+      - ./nginx/includes/set_redirect_headers.conf:/etc/nginx/set_redirect_headers.conf
+      - /etc/letsencrypt/live/casper.by/chain.pem:/etc/letsencrypt/live/casper.by/chain.pem
+      - /etc/letsencrypt/live/casper.by/privkey.pem:/etc/letsencrypt/live/casper.by/privkey.pem
+      - /etc/letsencrypt/live/casper.by/fullchain.pem:/etc/letsencrypt/live/casper.by/fullchain.pem
     networks:
       - monopoly-app-network
     depends_on:
