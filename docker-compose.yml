@@ -22,8 +22,10 @@ services:
     restart: always
     expose:
       - 8080
+      - 8000
     environment:
       PORT: 8080
+      WEBSOCKET_PORT: 8000
       POSTGRES_DB_HOST: monopoly-postgres-service
       POSTGRES_DB_PORT: 5432
       POSTGRES_DB_USERNAME: postgres
