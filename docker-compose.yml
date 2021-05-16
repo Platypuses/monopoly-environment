@@ -44,6 +44,7 @@ services:
       - 80
     environment:
       BACKEND_BASE_URL: https://monopoly-api.casper.by/api/v1
+      BACKEND_WEBSOCKET_BASE_URL: wss://monopoly-api.casper.by/ws
     networks:
       - monopoly-app-network
     depends_on:
